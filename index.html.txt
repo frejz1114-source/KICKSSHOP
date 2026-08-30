@@ -1,0 +1,193 @@
+Skip to content
+frejz1114-source
+KICKSSHOP
+Repository navigation
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security and quality
+Insights
+Settings
+KICKSSHOP
+/
+index.html
+in
+main
+
+Edit
+
+Preview
+Indent mode
+
+Spaces
+Indent size
+
+2
+Line wrap mode
+
+No wrap
+Editing index.html file contents
+720
+721
+722
+723
+724
+725
+726
+727
+728
+729
+730
+731
+732
+733
+734
+735
+736
+737
+738
+739
+740
+741
+742
+743
+744
+745
+746
+747
+748
+749
+750
+751
+752
+753
+754
+755
+756
+757
+758
+759
+760
+761
+762
+763
+764
+765
+766
+767
+768
+769
+770
+771
+772
+773
+774
+775
+776
+777
+778
+779
+780
+781
+782
+783
+784
+785
+786
+787
+788
+789
+790
+791
+792
+793
+794
+795
+796
+797
+798
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      background: var(--sand);
+      border-radius: 10px;
+      font-size: 23px;
+    }
+
+    .cart-item h4 {
+      margin: 0 0 4px;
+      font-size: 13px;
+    }
+
+    .cart-item p {
+      margin: 0;
+      color: var(--ink-light);
+      font-size: 12px;
+    }
+
+    .remove-button {
+      margin-left: auto;
+      color: #a44848;
+      background: transparent;
+      border: 0;
+      font-size: 12px;
+    }
+
+    .cart-footer {
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .checkout-button {
+      width: 100%;
+    }
+
+    .cookie {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      position: fixed;
+      z-index: 8;
+      right: 20px;
+      bottom: 20px;
+      left: 20px;
+      max-width: 890px;
+      margin: auto;
+      padding: 17px 20px;
+      color: var(--ink);
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+    }
+
+    .cookie p {
+      margin: 0;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .cookie button {
+      padding: 10px 21px;
+      flex: 0 0 auto;
+      color: white;
+      background: var(--ink);
+      border: 0;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .hidden {
+Use Control + Shift + m to toggle the tab key moving focus. Alternatively, use esc then tab to move to the next interactive element on the page.	
+ 
