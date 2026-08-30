@@ -2,10 +2,1312 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8">
-  <title>KICKSSHOP</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KICKSSHOP — Твій наступний крок</title>
+  <meta name="description" content="KICKSSHOP — сучасний інтернет-магазин взуття.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #192536;
+      --ink-soft: #5e6876;
+      --paper: #fffdfa;
+      --sand: #f2ede5;
+      --line: #e8e2d9;
+      --accent: #bd7153;
+      --white: #ffffff;
+      --shadow: 0 18px 55px rgba(22, 33, 49, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Manrope", Arial, sans-serif;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .promo-bar {
+      padding: 10px 15px;
+      color: var(--ink);
+      background: #ead9c7;
+      text-align: center;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.07em;
+    }
+
+    .header {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      min-height: 76px;
+      gap: 25px;
+    }
+
+    .logo {
+      font-size: 23px;
+      font-weight: 800;
+      letter-spacing: -1.7px;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .main-menu {
+      display: flex;
+      align-items: center;
+      gap: 27px;
+      margin-left: auto;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .main-menu a:hover,
+    .main-menu .active {
+      color: var(--accent);
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 5px;
+    }
+
+    .icon-button {
+      display: grid;
+      width: 40px;
+      height: 40px;
+      position: relative;
+      place-items: center;
+      color: var(--ink);
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 50%;
+      font-size: 20px;
+      transition: 0.2s;
+    }
+
+    .icon-button:hover {
+      background: var(--sand);
+      border-color: var(--line);
+    }
+
+    .cart-count {
+      display: none;
+      width: 17px;
+      height: 17px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      place-items: center;
+      color: white;
+      background: var(--accent);
+      border-radius: 50%;
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .cart-count.show {
+      display: grid;
+    }
+
+    .category-menu {
+      display: flex;
+      min-height: 51px;
+      align-items: center;
+      gap: 27px;
+      overflow-x: auto;
+      color: var(--ink-soft);
+      white-space: nowrap;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .category-menu a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      display: grid;
+      min-height: 490px;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+      margin: 28px 0 95px;
+      background: var(--sand);
+      border-radius: 25px;
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding: clamp(36px, 6vw, 75px);
+    }
+
+    .eyebrow {
+      margin: 0 0 16px;
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 480px;
+      margin: 0;
+      font-size: clamp(39px, 4.8vw, 62px);
+      line-height: 1.04;
+      letter-spacing: -0.065em;
+    }
+
+    .hero-text {
+      max-width: 430px;
+      margin: 25px 0 31px;
+      color: var(--ink-soft);
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    .primary-button,
+    .light-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 15px 22px;
+      border: 0;
+      border-radius: 11px;
+      font-size: 13px;
+      font-weight: 800;
+      transition: 0.2s;
+    }
+
+    .primary-button {
+      color: white;
+      background: var(--ink);
+    }
+
+    .primary-button:hover {
+      background: #31425c;
+      transform: translateY(-2px);
+    }
+
+    .hero-image {
+      min-height: 350px;
+      background:
+        linear-gradient(90deg, rgba(31, 37, 49, 0.04), rgba(31, 37, 49, 0)),
+        url("https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=1200&q=90")
+        center / cover no-repeat;
+    }
+
+    .section {
+      margin-bottom: 96px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 27px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(26px, 3vw, 36px);
+      letter-spacing: -0.055em;
+    }
+
+    .section-link {
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .category-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .category-card {
+      display: flex;
+      min-height: 320px;
+      align-items: flex-end;
+      position: relative;
+      overflow: hidden;
+      padding: 21px;
+      color: white;
+      border-radius: 17px;
+      isolation: isolate;
+      background-color: #aaa;
+    }
+
+    .category-card::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(18, 27, 42, 0.65), transparent 65%);
+    }
+
+    .category-card:nth-child(1) {
+      background: url("https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=700&q=85") center / cover;
+    }
+
+    .category-card:nth-child(2) {
+      background: url("https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=85") center / cover;
+    }
+
+    .category-card:nth-child(3) {
+      background: url("https://images.unsplash.com/photo-1514989940723-e8e51635b782?auto=format&fit=crop&w=700&q=85") center / cover;
+    }
+
+    .category-card:nth-child(4) {
+      background: url("https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=700&q=85") center / cover;
+    }
+
+    .category-card h3 {
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: -0.04em;
+    }
+
+    .category-card span {
+      display: block;
+      margin-top: 6px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .product-card {
+      position: relative;
+    }
+
+    .product-image {
+      display: block;
+      height: 290px;
+      position: relative;
+      overflow: hidden;
+      background: #f1efec;
+      border-radius: 16px;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s;
+    }
+
+    .product-card:hover .product-image img {
+      transform: scale(1.05);
+    }
+
+    .badge {
+      position: absolute;
+      z-index: 1;
+      top: 12px;
+      left: 12px;
+      padding: 7px 9px;
+      color: var(--ink);
+      background: white;
+      border-radius: 7px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .heart {
+      display: grid;
+      width: 37px;
+      height: 37px;
+      position: absolute;
+      z-index: 1;
+      top: 10px;
+      right: 10px;
+      place-items: center;
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.92);
+      border: 0;
+      border-radius: 50%;
+      font-size: 21px;
+    }
+
+    .heart.active {
+      color: #c25b5b;
+    }
+
+    .product-info {
+      padding: 14px 2px 0;
+    }
+
+    .brand {
+      margin: 0 0 5px;
+      color: #858d98;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .product-name {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin-top: 10px;
+    }
+
+    .price {
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .sale {
+      color: #be5b43;
+    }
+
+    .old-price {
+      color: #969ca5;
+      font-size: 12px;
+      text-decoration: line-through;
+    }
+
+    .add-button {
+      width: 100%;
+      margin-top: 13px;
+      padding: 11px;
+      color: var(--ink);
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 800;
+      transition: 0.2s;
+    }
+
+    .add-button:hover {
+      color: white;
+      background: var(--ink);
+      border-color: var(--ink);
+    }
+
+    .campaign {
+      display: grid;
+      min-height: 385px;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+      background: #24334b;
+      border-radius: 22px;
+    }
+
+    .campaign-image {
+      min-height: 280px;
+      background: url("https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=1000&q=85") center / cover;
+    }
+
+    .campaign-copy {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding: clamp(34px, 5vw, 58px);
+      color: white;
+    }
+
+    .campaign-copy h2 {
+      max-width: 440px;
+      margin: 0;
+      font-size: clamp(31px, 4vw, 48px);
+      line-height: 1.08;
+      letter-spacing: -0.06em;
+    }
+
+    .campaign-copy p {
+      max-width: 420px;
+      margin: 20px 0 27px;
+      color: #d7e0eb;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .light-button {
+      color: var(--ink);
+      background: white;
+    }
+
+    .light-button:hover {
+      background: #f1e8df;
+      transform: translateY(-2px);
+    }
+
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .benefit {
+      padding: 24px;
+      background: var(--sand);
+      border-radius: 16px;
+    }
+
+    .benefit-icon {
+      display: grid;
+      width: 40px;
+      height: 40px;
+      margin-bottom: 17px;
+      place-items: center;
+      color: var(--accent);
+      background: white;
+      border-radius: 11px;
+      font-size: 19px;
+      font-weight: 800;
+    }
+
+    .benefit h3 {
+      margin: 0 0 7px;
+      font-size: 14px;
+    }
+
+    .benefit p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .newsletter {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      padding: 38px;
+      color: white;
+      background: var(--ink);
+      border-radius: 18px;
+    }
+
+    .newsletter h2 {
+      margin: 0 0 7px;
+      font-size: 26px;
+      letter-spacing: -0.04em;
+    }
+
+    .newsletter p {
+      margin: 0;
+      color: #b8c2d0;
+      font-size: 13px;
+    }
+
+    .email-form {
+      display: flex;
+      width: min(100%, 385px);
+      gap: 8px;
+    }
+
+    .email-form input {
+      width: 100%;
+      padding: 13px 14px;
+      color: white;
+      outline: none;
+      background: rgba(255, 255, 255, 0.11);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 10px;
+    }
+
+    .email-form input::placeholder {
+      color: #c4cbd5;
+    }
+
+    .email-form button {
+      padding: 0 17px;
+      color: var(--ink);
+      background: white;
+      border: 0;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    footer {
+      margin-top: 90px;
+      padding: 52px 0 24px;
+      color: white;
+      background: #121d2e;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .footer-logo {
+      display: inline-block;
+      margin-bottom: 14px;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+    }
+
+    .footer-logo span {
+      color: #dc9270;
+    }
+
+    .footer-about {
+      max-width: 275px;
+      margin: 0;
+      color: #adb8c7;
+      font-size: 12px;
+      line-height: 1.65;
+    }
+
+    .footer-column h4 {
+      margin: 0 0 15px;
+      font-size: 13px;
+    }
+
+    .footer-column a {
+      display: block;
+      margin-bottom: 10px;
+      color: #adb8c7;
+      font-size: 12px;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin-top: 38px;
+      padding-top: 20px;
+      color: #8490a0;
+      border-top: 1px solid rgba(255, 255, 255, 0.13);
+      font-size: 11px;
+    }
+
+    .overlay {
+      visibility: hidden;
+      opacity: 0;
+      position: fixed;
+      z-index: 20;
+      inset: 0;
+      background: rgba(12, 19, 30, 0.45);
+      transition: 0.25s;
+    }
+
+    .overlay.open {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .cart {
+      display: flex;
+      width: min(400px, 100%);
+      flex-direction: column;
+      position: fixed;
+      z-index: 21;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      padding: 24px;
+      background: white;
+      box-shadow: var(--shadow);
+      transform: translateX(105%);
+      transition: 0.3s;
+    }
+
+    .cart.open {
+      transform: translateX(0);
+    }
+
+    .cart-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cart-header h3 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .close-cart {
+      width: 35px;
+      height: 35px;
+      color: var(--ink);
+      background: var(--sand);
+      border: 0;
+      border-radius: 50%;
+      font-size: 21px;
+    }
+
+    .cart-items {
+      flex: 1;
+      overflow: auto;
+      padding: 18px 0;
+    }
+
+    .empty {
+      margin-top: 45px;
+      color: var(--ink-soft);
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 14px;
+      margin-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cart-item-image {
+      display: grid;
+      width: 53px;
+      height: 53px;
+      flex: 0 0 53px;
+      place-items: center;
+      background: var(--sand);
+      border-radius: 10px;
+      font-size: 22px;
+    }
+
+    .cart-item h4 {
+      margin: 0 0 4px;
+      font-size: 12px;
+    }
+
+    .cart-item p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 11px;
+    }
+
+    .remove {
+      margin-left: auto;
+      color: #b15151;
+      background: transparent;
+      border: 0;
+      font-size: 11px;
+    }
+
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .checkout {
+      width: 100%;
+      margin-top: 14px;
+    }
+
+    .cookie {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      position: fixed;
+      z-index: 15;
+      right: 20px;
+      bottom: 20px;
+      left: 20px;
+      max-width: 820px;
+      margin: auto;
+      padding: 15px 19px;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      box-shadow: var(--shadow);
+    }
+
+    .cookie p {
+      margin: 0;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .cookie button {
+      padding: 10px 18px;
+      flex: 0 0 auto;
+      color: white;
+      background: var(--ink);
+      border: 0;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .hide {
+      display: none;
+    }
+
+    @media (max-width: 900px) {
+      .main-menu {
+        display: none;
+      }
+
+      .hero,
+      .campaign {
+        grid-template-columns: 1fr;
+      }
+
+      .category-cards,
+      .products,
+      .benefits {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .newsletter {
+        display: block;
+      }
+
+      .email-form {
+        margin-top: 20px;
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .promo-bar {
+        font-size: 9px;
+      }
+
+      .header-top {
+        min-height: 64px;
+      }
+
+      .category-menu {
+        min-height: 45px;
+        gap: 20px;
+      }
+
+      .hero {
+        margin-top: 16px;
+        margin-bottom: 65px;
+      }
+
+      .hero-copy,
+      .campaign-copy {
+        padding: 31px 24px;
+      }
+
+      .hero-text {
+        margin: 17px 0 24px;
+        font-size: 14px;
+      }
+
+      .section {
+        margin-bottom: 65px;
+      }
+
+      .category-cards,
+      .products {
+        gap: 11px;
+      }
+
+      .category-card {
+        min-height: 210px;
+        padding: 14px;
+      }
+
+      .category-card h3 {
+        font-size: 16px;
+      }
+
+      .category-card span {
+        font-size: 10px;
+      }
+
+      .product-image {
+        height: 205px;
+      }
+
+      .product-info {
+        padding-top: 10px;
+      }
+
+      .brand {
+        font-size: 9px;
+      }
+
+      .product-name,
+      .price {
+        font-size: 12px;
+      }
+
+      .add-button {
+        padding: 9px 4px;
+        font-size: 10px;
+      }
+
+      .benefits {
+        grid-template-columns: 1fr;
+      }
+
+      .newsletter {
+        padding: 27px 22px;
+      }
+
+      .newsletter h2 {
+        font-size: 23px;
+      }
+
+      .email-form {
+        display: block;
+      }
+
+      .email-form button {
+        width: 100%;
+        height: 43px;
+        margin-top: 8px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 27px 15px;
+      }
+
+      .footer-grid > div:first-child {
+        grid-column: 1 / -1;
+      }
+
+      .footer-bottom,
+      .cookie {
+        display: block;
+      }
+
+      .footer-bottom span {
+        display: block;
+        margin-bottom: 6px;
+      }
+
+      .cookie {
+        right: 12px;
+        bottom: 12px;
+        left: 12px;
+      }
+
+      .cookie button {
+        width: 100%;
+        margin-top: 10px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <h1>KICKSSHOP</h1>
-  <p>Мій магазин взуття</p>
+  <div class="promo-bar">БЕЗКОШТОВНА ДОСТАВКА ВІД 2 000 ₴ · ОБМІН ПРОТЯГОМ 14 ДНІВ</div>
+
+  <header class="header">
+    <div class="container">
+      <div class="header-top">
+        <a class="logo" href="#">KICKS<span>SHOP</span></a>
+
+        <nav class="main-menu">
+          <a class="active" href="#">Головна</a>
+          <a href="#catalog">Каталог</a>
+          <a href="#new">Новинки</a>
+          <a href="#sale">Розпродаж</a>
+          <a href="#about">Про нас</a>
+        </nav>
+
+        <div class="header-actions">
+          <button class="icon-button" onclick="showMessage('Пошук товарів додамо наступним кроком')" aria-label="Пошук">⌕</button>
+          <button class="icon-button" onclick="showMessage('Список обраного додамо наступним кроком')" aria-label="Обране">♡</button>
+          <button class="icon-button" onclick="toggleCart()" aria-label="Кошик">
+            <span class="cart-count" id="cartCount">0</span>
+            ⌑
+          </button>
+        </div>
+      </div>
+
+      <nav class="category-menu">
+        <a href="#catalog">Кросівки</a>
+        <a href="#catalog">Черевики</a>
+        <a href="#catalog">Туфлі</a>
+        <a href="#catalog">Сандалі</a>
+        <a href="#catalog">Спортивне взуття</a>
+        <a href="#catalog">Аксесуари</a>
+        <a href="#new">Бренди</a>
+        <a href="#sale">Акції</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="container">
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Нова колекція 2026</p>
+          <h1>Взуття, у якому хочеться йти далі</h1>
+          <p class="hero-text">Мінімалістичні моделі на кожен день — від легких кросівок до теплих черевиків.</p>
+          <a class="primary-button" href="#catalog">Перейти до каталогу <span>→</span></a>
+        </div>
+        <div class="hero-image"></div>
+      </div>
+    </section>
+
+    <section class="container section">
+      <div class="section-heading">
+        <h2>Обирай свій стиль</h2>
+        <a class="section-link" href="#catalog">Усі категорії →</a>
+      </div>
+
+      <div class="category-cards">
+        <a class="category-card" href="#catalog">
+          <div><h3>Жінкам</h3><span>Відкрити колекцію →</span></div>
+        </a>
+        <a class="category-card" href="#catalog">
+          <div><h3>Чоловікам</h3><span>Відкрити колекцію →</span></div>
+        </a>
+        <a class="category-card" href="#catalog">
+          <div><h3>Дітям</h3><span>Відкрити колекцію →</span></div>
+        </a>
+        <a class="category-card" href="#catalog">
+          <div><h3>Спорт</h3><span>Відкрити колекцію →</span></div>
+        </a>
+      </div>
+    </section>
+
+    <section class="container section" id="catalog">
+      <div class="section-heading">
+        <h2>Популярні моделі</h2>
+        <a class="section-link" href="#catalog">Дивитися всі →</a>
+      </div>
+
+      <div class="products">
+        <article class="product-card">
+          <div class="product-image">
+            <span class="badge">Хіт</span>
+            <button class="heart" onclick="toggleHeart(this)" aria-label="Додати в обране">♡</button>
+            <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=700&q=85" alt="Білі кросівки">
+          </div>
+          <div class="product-info">
+            <p class="brand">New Balance</p>
+            <h3 class="product-name">Кросівки 550 White</h3>
+            <div class="price-row"><span class="price">4 990 ₴</span></div>
+            <button class="add-button" onclick="addToCart('New Balance 550 White', 4990)">Додати в кошик</button>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image">
+            <span class="badge">Новинка</span>
+            <button class="heart" onclick="toggleHeart(this)" aria-label="Додати в обране">♡</button>
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=85" alt="Червоні кросівки">
+          </div>
+          <div class="product-info">
+            <p class="brand">Nike</p>
+            <h3 class="product-name">Air Max Pulse</h3>
+            <div class="price-row"><span class="price">5 490 ₴</span></div>
+            <button class="add-button" onclick="addToCart('Nike Air Max Pulse', 5490)">Додати в кошик</button>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image">
+            <span class="badge">-20%</span>
+            <button class="heart" onclick="toggleHeart(this)" aria-label="Додати в обране">♡</button>
+            <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=700&q=85" alt="Кросівки Adidas">
+          </div>
+          <div class="product-info">
+            <p class="brand">Adidas</p>
+            <h3 class="product-name">Gazelle Indoor</h3>
+            <div class="price-row">
+              <span class="price sale">3 990 ₴</span>
+              <span class="old-price">4 990 ₴</span>
+            </div>
+            <button class="add-button" onclick="addToCart('Adidas Gazelle Indoor', 3990)">Додати в кошик</button>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-image">
+            <span class="badge">Хіт</span>
+            <button class="heart" onclick="toggleHeart(this)" aria-label="Додати в обране">♡</button>
+            <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=700&q=85" alt="Кросівки Puma">
+          </div>
+          <div class="product-info">
+            <p class="brand">Puma</p>
+            <h3 class="product-name">RS-X Efekt</h3>
+            <div class="price-row"><span class="price">4 390 ₴</span></div>
+            <button class="add-button" onclick="addToCart('Puma RS-X Efekt', 4390)">Додати в кошик</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="container section" id="sale">
+      <div class="campaign">
+        <div class="campaign-image"></div>
+        <div class="campaign-copy">
+          <p class="eyebrow" style="color:#e9ac88">До -40% на обрані моделі</p>
+          <h2>Завершуємо літо — починаємо рух</h2>
+          <p>Знижки на моделі для прогулянок, подорожей і нового ритму кожного дня.</p>
+          <a class="light-button" href="#catalog">Перейти до акцій →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section" id="new">
+      <div class="section-heading">
+        <h2>Чому KICKSSHOP</h2>
+      </div>
+
+      <div class="benefits">
+        <div class="benefit">
+          <div class="benefit-icon">↗</div>
+          <h3>Швидка доставка</h3>
+          <p>Відправляємо замовлення щодня Новою поштою по всій Україні.</p>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">↻</div>
+          <h3>Легкий обмін</h3>
+          <p>14 днів на обмін або повернення, якщо розмір не підійшов.</p>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">✓</div>
+          <h3>Оригінальні товари</h3>
+          <p>Працюємо лише з перевіреними постачальниками та брендами.</p>
+        </div>
+        <div class="benefit">
+          <div class="benefit-icon">♡</div>
+          <h3>Підтримка</h3>
+          <p>Допоможемо з розміром і знайдемо ідеальну пару для тебе.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section" id="about">
+      <div class="newsletter">
+        <div>
+          <h2>Першим дізнавайся про новинки</h2>
+          <p>Знижка 10% на перше замовлення після підписки.</p>
+        </div>
+        <form class="email-form" onsubmit="subscribe(event)">
+          <input type="email" placeholder="Твій email" required>
+          <button type="submit">Підписатися</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="footer-logo" href="#">KICKS<span>SHOP</span></a>
+          <p class="footer-about">Твій наступний крок починається тут. Взуття для життя, руху та нових історій.</p>
+        </div>
+        <div class="footer-column">
+          <h4>Покупцям</h4>
+          <a href="#">Доставка й оплата</a>
+          <a href="#">Обмін і повернення</a>
+          <a href="#">Таблиця розмірів</a>
+        </div>
+        <div class="footer-column">
+          <h4>Компанія</h4>
+          <a href="#">Про нас</a>
+          <a href="#">Контакти</a>
+          <a href="#">Блог</a>
+        </div>
+        <div class="footer-column">
+          <h4>Контакти</h4>
+          <a href="tel:+380000000000">+38 (000) 000-00-00</a>
+          <a href="mailto:hello@kicksshop.ua">hello@kicksshop.ua</a>
+          <a href="#">Instagram</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 KICKSSHOP. Усі права захищені.</span>
+        <span>Політика конфіденційності</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="overlay" id="overlay" onclick="toggleCart()"></div>
+
+  <aside class="cart" id="cart">
+    <div class="cart-header">
+      <h3>Твій кошик</h3>
+      <button class="close-cart" onclick="toggleCart()" aria-label="Закрити">×</button>
+    </div>
+
+    <div class="cart-items" id="cartItems">
+      <p class="empty">Кошик поки порожній.<br>Знайди свою ідеальну пару.</p>
+    </div>
+
+    <div class="cart-total">
+      <span>Разом</span>
+      <span id="cartTotal">0 ₴</span>
+    </div>
+
+    <button class="primary-button checkout" onclick="checkout()">Оформити замовлення</button>
+  </aside>
+
+  <div class="cookie" id="cookie">
+    <p>Ми використовуємо cookie, щоб сайт був зручнішим і показував актуальні пропозиції.</p>
+    <button onclick="acceptCookie()">Добре</button>
+  </div>
+
+  <script>
+    const cart = [];
+
+    function formatPrice(price) {
+      return new Intl.NumberFormat("uk-UA").format(price) + " ₴";
+    }
+
+    function addToCart(name, price) {
+      const found = cart.find(item => item.name === name);
+
+      if (found) {
+        found.quantity += 1;
+      } else {
+        cart.push({ name, price, quantity: 1 });
+      }
+
+      updateCart();
+      openCart();
+    }
+
+    function updateCart() {
+      const cartItems = document.getElementById("cartItems");
+      const cartCount = document.getElementById("cartCount");
+      const cartTotal = document.getElementById("cartTotal");
+
+      const count = cart.reduce((total, item) => total + item.quantity, 0);
+      const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+      cartCount.textContent = count;
+      cartCount.classList.toggle("show", count > 0);
+      cartTotal.textContent = formatPrice(total);
+
+      if (cart.length === 0) {
+        cartItems.innerHTML = '<p class="empty">Кошик поки порожній.<br>Знайди свою ідеальну пару.</p>';
+        return;
+      }
+
+      cartItems.innerHTML = cart.map((item, index) => `
+        <div class="cart-item">
+          <div class="cart-item-image">◒</div>
+          <div>
+            <h4>${item.name}</h4>
+            <p>${item.quantity} шт. · ${formatPrice(item.price)}</p>
+          </div>
+          <button class="remove" onclick="removeItem(${index})">Видалити</button>
+        </div>
+      `).join("");
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1);
+      updateCart();
+    }
+
+    function toggleCart() {
+      document.getElementById("cart").classList.toggle("open");
+      document.getElementById("overlay").classList.toggle("open");
+    }
+
+    function openCart() {
+      document.getElementById("cart").classList.add("open");
+      document.getElementById("overlay").classList.add("open");
+    }
+
+    function toggleHeart(button) {
+      button.classList.toggle("active");
+      button.textContent = button.classList.contains("active") ? "♥" : "♡";
+    }
+
+    function acceptCookie() {
+      document.getElementById("cookie").classList.add("hide");
+    }
+
+    function subscribe(event) {
+      event.preventDefault();
+      const email = event.target.querySelector("input").value;
+      alert("Дякуємо! Знижка 10% буде надіслана на " + email);
+      event.target.reset();
+    }
+
+    function showMessage(message) {
+      alert(message);
+    }
+
+    function checkout() {
+      if (cart.length === 0) {
+        alert("Додай хоча б один товар до кошика.");
+        return;
+      }
+
+      alert("Наступним кроком зробимо справжню сторінку оформлення замовлення.");
+    }
+  </script>
 </body>
 </html>
